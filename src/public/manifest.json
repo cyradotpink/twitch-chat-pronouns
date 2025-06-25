@@ -1,6 +1,6 @@
 {
   "name": "Twitch Chat pronouns",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "Add Pronouns to Twitch Chat",
   "content_scripts": [
     {
@@ -10,12 +10,8 @@
         "https://dashboard.twitch.tv/u/*/stream-manager",
         "https://dashboard.twitch.tv/popout/u/*/stream-manager/chat"
       ],
-      "js": [
-        "./bundle.js"
-      ],
-      "css": [
-        "./bundle.css"
-      ],
+      "js": ["./bundle.js"],
+      "css": ["./bundle.css"],
       "run_at": "document_end",
       "all_frames": true
     }
@@ -30,7 +26,7 @@
   ],
   "browser_specific_settings": {
     "gecko": {
-      "id": "{5ac8c0a3-ce21-4c47-972d-b45e685cca5d}"
+      "id": "twitch-chat-pronouns@cyra.pink"
     }
   },
   "manifest_version": 3
