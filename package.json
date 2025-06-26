@@ -1,6 +1,6 @@
 {
   "name": "twitch-chat-pronouns",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "index.js",
   "repository": "",
   "author": "Kira Paul <k@cyra.pink>",
@@ -13,12 +13,13 @@
     "preact": "^10.17.0",
     "preact-render-to-string": "^6.2.1",
     "typescript": "^4.0.5",
-    "web-ext": "^8.8.0",
+    "web-ext": "^8.2.0",
     "zod": "^3.22.2"
   },
   "scripts": {
     "build:dev": "node esbuild.mjs",
     "build": "NODE_ENV=\"prod\" node esbuild.mjs",
-    "zip": "cd dist && bestzip ../out.zip ./*"
+    "zip": "cd dist && bestzip ../out.zip ./*",
+    "package-web-ext": "web-ext build --overwrite-dest --source-dir dist"
   }
 }

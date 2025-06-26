@@ -1,6 +1,8 @@
-node_modules/
-dist/
-web-ext-artifacts/
-out.zip
+/node_modules/
+/dist/
+/web-ext-artifacts/
+/mozilla-credentials.json
+/source.zip
+/out.zip
 *.swp
 *.swo
