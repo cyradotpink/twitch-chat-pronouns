@@ -1,7 +1,8 @@
 import { copy } from "esbuild-plugin-copy";
 import esbuild from "esbuild";
+import { readFile, writeFile } from "fs/promises";
 
-const env = (process.env.NODE_ENV || "development").toLowerCase()
+const env = (process.env.NODE_ENV || "development").toLowerCase();
 
 /** @type {esbuild.BuildOptions} */
 const config = {
@@ -19,15 +20,22 @@ const config = {
     }),
   ],
   define: {
-    "process.env.NODE_ENV": JSON.stringify(env)
-  }
+    "process.env.NODE_ENV": JSON.stringify(env),
+  },
 };
 
 esbuild
   .build(config)
-  .then(() => {
-    console.log(`⚡ Build complete! (${env}) ⚡`);
+  .then(async () => {
+    let manifest = JSON.parse(await readFile("dist/manifest.json"));
+    let packagejson = JSON.parse(await readFile("package.json"));
+    manifest.version = packagejson.version;
+    await writeFile(
+      "dist/manifest.json",
+      JSON.stringify(manifest, undefined, 2),
+    );
   })
-  .catch(() => {
+  .catch((e) => {
+    console.error(e);
     process.exit(1);
   });
