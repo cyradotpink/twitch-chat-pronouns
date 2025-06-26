@@ -8,9 +8,11 @@ export const parsePronounGroupToString = (
     return `${p.subject}`;
   }
 
+  // word joiners to prevent line breaks
+  let sep = "\u2060/\u2060";
   if (alt !== undefined) {
-    return `${p.subject}/${alt.subject}`;
+    return `${p.subject}${sep}${alt.subject}`;
   } else {
-    return `${p.subject}/${p.object}`;
+    return `${p.subject}${sep}${p.object}`;
   }
 };

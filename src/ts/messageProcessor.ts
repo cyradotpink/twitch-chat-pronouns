@@ -48,9 +48,7 @@ export const processVoDMessage = async (
         generatePronounBadge(
           parsePronounGroupToString(
             newPronouns[user.pronoun_id],
-            user.alt_pronoun_id
-              ? newPronouns[user.alt_pronoun_id]
-              : undefined,
+            user.alt_pronoun_id ? newPronouns[user.alt_pronoun_id] : undefined,
           ),
         ),
       );
@@ -87,10 +85,12 @@ export const processLiveMessage = async (
       let prettyPrint: string = newPronouns[pronouns.pronoun_id].subject;
 
       if (!newPronouns[pronouns.pronoun_id].singular) {
+        // word joiners to prevent line breaks
+        let sep = "\u2060/\u2060";
         if (pronouns.alt_pronoun_id) {
-          prettyPrint += "/" + newPronouns[pronouns.alt_pronoun_id].subject;
+          prettyPrint += sep + newPronouns[pronouns.alt_pronoun_id].subject;
         } else {
-          prettyPrint += "/" + newPronouns[pronouns.pronoun_id].object;
+          prettyPrint += sep + newPronouns[pronouns.pronoun_id].object;
         }
       }
 

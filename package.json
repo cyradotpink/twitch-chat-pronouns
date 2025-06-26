@@ -1,6 +1,6 @@
 {
   "name": "twitch-chat-pronouns",
-  "version": "0.3.1",
+  "version": "0.3.3",
   "main": "index.js",
   "repository": "",
   "author": "Kira Paul <k@cyra.pink>",
